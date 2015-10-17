@@ -17,6 +17,5 @@ obszar = {
         'chojnice': {'name': 'Powiat Chojnicki', 'bbox':'16.8,53.45,18.3,54.05'},
         'olesno':{'name': 'Olesno i okolice', 'bbox':'18.30,50.70,18.68,51.05'},
         'swiebodzin':{'name': 'Powiat Świebodziński', 'bbox':'14.92,52,15.94,52.5'},
-        'test':{'name': 'Unit Test', 'bbox':'17.95605,50.1019,17.97759,50.11577'}        
+        'test':{'name': 'Unit Test', 'bbox':'17.95605,50.1019,17.97759,50.11577'}
         }
-17.95605,50.1019,17.97759,50.11577
