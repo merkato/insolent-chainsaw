@@ -16,7 +16,7 @@ def run(cmd):
 
 def filesizemb(filepath):
     if os.path.exists(filepath):
-        return ((float(os.path.getsize(filepath)))/1024 * 1024)
+        return (float(os.path.getsize(filepath))/1048576)
     return -1
 ##
 # Helpers end
