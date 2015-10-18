@@ -36,9 +36,8 @@ def to_pbf(xml,pbf_f):
     Parametry:  xml - plik xml pobrany z api Overpass
                 pbf - plik do wygenerowania
     '''
-    p_osmosis = osmosis_dir+ 'osmosis \
-    --read-xml file='+ xml +' outPipe.0=1 \
-    --write-pbf file='+ pbf_f +' omitmetadata=true granularity=1000 inPipe.0=1'
+    p_osmosis = osmosis_dir+ 'osmosis --fast-read-xml file='+ xml +' \
+    --write-pbf file='+ pbf_f +' omitmetadata=true granularity=1000'
     try:
         o_result = run(p_osmosis)
     except:
