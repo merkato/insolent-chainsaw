@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-import sys, pycurl
+import sys
+import pycurl
 from datetime import datetime
 from konfig import *
 from funkcje import *
