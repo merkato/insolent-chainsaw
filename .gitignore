@@ -59,3 +59,4 @@ target/
 # OSM files
 *.osm
 *.pbf
+/metadata.txt

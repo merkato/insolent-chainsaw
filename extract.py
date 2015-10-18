@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-import sys, pycurl
+import sys
+import pycurl
 from datetime import datetime
 from konfig import *
 from funkcje import *
@@ -25,10 +26,7 @@ def get_osm(plik):
         c.setopt(c.HTTPHEADER, ['Connection: Keep-Alive','Keep-Alive: 1000'])
         c.setopt(c.WRITEDATA, f)
         c.perform()
-        paczka = str(int(c.getinfo(c.SIZE_DOWNLOAD)/1048576))
-        speed = str(int(c.getinfo(c.SPEED_DOWNLOAD)/1024))
         c.close()
-        return paczka, speed
 
 def to_pbf(xml,pbf_f):
     '''
@@ -60,14 +58,20 @@ def to_url(pbf_f, pbf_n, www_dir):
     return url_uri
 
 with open('metadata.txt', 'a') as l:
-    paczka, speed = get_osm(xml_name)
+    get_osm(xml_name)
     to_pbf(xml_name, pbf_dest)
     url_uri = to_url(pbf_dest, pbf_name, www_dir)
-    pbf_msg = ' ('+ str(filesizemb(pbf_dest)) +'MB) \n'
+    xml_size = filesizemb(xml_name)
+    pbf_size = filesizemb(pbf_dest)
+    kompresja_msg = 'R: '+ str(int(kompresja)) +'%'
+    xml_msg = 'XML: ('+ str(xml_size) +'MB)'
+    pbf_msg = 'PBF: ('+ str(pbf_size) +'MB)'
     timestamp = datetime.now()
-    msg = name + ', "' + bbox + '"\n    ' + paczka + 'MB, ' + speed + 'kB/s :'+ str(timestamp) + '\n'
+    msg = name + '\n "' + bbox + '"\n    ' + str(timestamp) + '\n'
+    msg_sizes = xml_msg + ' ' + pbf_msg + kompresja_msg
+    print '\n'
     print msg
     print url_uri
-    print pbf_msg
+    print msg_sizes
     l.write(msg)
     l.close()
