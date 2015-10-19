@@ -45,12 +45,11 @@ def to_pbf(xml,pbf_f):
     Parametry:  xml - plik xml pobrany z api Overpass
                 pbf - plik do wygenerowania
     '''
-    p_osmosis = osmosis_dir+ 'osmosis --read-xml file='+ xml +' \
-    --write-pbf file='+ pbf_f +' omitmetadata=true granularity=1000'
+    p_osmc = osmconvert_dir + 'osmconvert '+ xml +' -o='+ pbf_f
     try:
-        o_result = run(p_osmosis)
+        o_result = run(p_osmc)
     except IOError:
-        print "Zepsułem coś w Osmosis. Błąd I/O. Sprawdź uprawnienia zapisu"
+        print "Zepsułem coś w Osmconvert. Błąd I/O. Sprawdź uprawnienia zapisu"
         sys.exit()
 
 def to_sql(mapping, pbf_f):

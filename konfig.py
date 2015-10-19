@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 
 mapping_f = 'mapping_topo_c.json'
-osmosis_dir = '/home/mechanik/dev/konwersje/osmosis-latest/bin/'
+osmconvert_dir = '/home/mechanik/dev/osmconvert/'
 imposm_dir = '/home/mechanik/dev/imposm3/'
-www_dir = '/home/mechanik/dev/pbfs'
+www_dir = '/home/mechanik/www/pbfs'
 
 #Adres URL serwera API Overpass
 baza = 'http://www.overpass-api.de/api/xapi?map?bbox='
