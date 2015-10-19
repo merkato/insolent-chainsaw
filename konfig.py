@@ -15,7 +15,7 @@ obszar = {
         'swd':  {'name': 'Powiat Wodzisławski', 'bbox':'18.194,49.82,18.634,50.11'},
         'slezsko': {'name': 'Morawskośląskie międzygórze', 'bbox':'17.8,49.50,19.50,52'},
         'chojnice': {'name': 'Powiat Chojnicki', 'bbox':'16.8,53.45,18.3,54.05'},
-        'olesno':{'name': 'Olesno i okolice', 'bbox':'18.30,50.70,18.68,51.05'},
-        'swiebodzin':{'name': 'Powiat Świebodziński', 'bbox':'14.92,52,15.94,52.5'},
-        'test':{'name': 'Unit Test', 'bbox':'17.95605,50.1019,17.97759,50.11577'}
+        'olesno': {'name': 'Olesno i okolice', 'bbox':'18.30,50.70,18.68,51.05'},
+        'swiebodzin': {'name': 'Powiat Świebodziński', 'bbox':'14.92,52,15.94,52.5'},
+        'test': {'name': 'Unit Test', 'bbox':'17.95605,50.1019,17.97759,50.11577'}
         }

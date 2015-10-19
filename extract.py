@@ -7,26 +7,37 @@ from konfig import *
 from funkcje import *
 from subprocess import (PIPE, Popen)
 
-#Inicjalizacja zmiennych
 extract_key = sys.argv[1]
-bbox = obszar.get(extract_key,{}).get('bbox')
-name = obszar.get(extract_key,{}).get('name')
-pobieracz = baza + bbox
-xml_name = extract_key + '.osm'
-pbf_name = extract_key + '.osm.pbf'
-pbf_dest = imposm_dir + pbf_name
+try:
+    bbox = obszar.get(extract_key,{}).get('bbox')
+    name = obszar.get(extract_key,{}).get('name')
+    pobieracz = baza + bbox
+    xml_name = extract_key + '.osm'
+    pbf_name = extract_key + '.osm.pbf'
+    pbf_dest = imposm_dir + pbf_name
+except TypeError:
+    print "Niepoprawny argument obszaru.\n"
+    print "Poprawna składnia: ./extract_full.py obszar"
+    print "Zdefiniowane obszary:"
+    for item in obszar:
+        print item
+    sys.exit()
 
 def get_osm(plik):
     '''
     Pobierz wybrany fragment danych OSM na podstawie zdefiniowanego bbox
     '''
-    with open(plik, 'wb') as f:
-        c = pycurl.Curl()
-        c.setopt(c.URL, pobieracz)
-        c.setopt(c.HTTPHEADER, ['Connection: Keep-Alive','Keep-Alive: 1000'])
-        c.setopt(c.WRITEDATA, f)
-        c.perform()
-        c.close()
+    c = pycurl.Curl()
+    c.setopt(c.URL, pobieracz)
+    c.setopt(c.HTTPHEADER, ['Connection: Keep-Alive','Keep-Alive: 1000'])
+    try:
+        with open(plik, 'wb') as f:
+            c.setopt(c.WRITEDATA, f)
+            c.perform()
+            c.close()
+    except pycurl.error:
+        print "Błąd komunikacji sieciowej. Sprawdź połączenie internetowe"
+        sys.exit()
 
 def to_pbf(xml,pbf_f):
     '''
@@ -38,8 +49,9 @@ def to_pbf(xml,pbf_f):
     --write-pbf file='+ pbf_f +' omitmetadata=true granularity=1000'
     try:
         o_result = run(p_osmosis)
-    except:
-        pass
+    except IOError:
+        print "Błąd I/O. Sprawdź uprawnienia zapisu"
+        sys.exit()
 
 def to_url(pbf_f, pbf_n, www_dir):
     '''
@@ -53,8 +65,10 @@ def to_url(pbf_f, pbf_n, www_dir):
         cmd = 'cp '+ pbf_f + ' ' + www_dir
         url_copy_result = run(cmd)
         url_uri = 'http://dev.gis-support.pl/repo/pbfs/' + pbf_n
-    except:
-        pass
+    except IOError:
+        print "Błąd I/O. Sprawdź uprawnienia zapisu i ścieżki dostępu"
+        print "Wykonywano: " + cmd
+        sys.exit()
     return url_uri
 
 with open('metadata.txt', 'a') as l:
@@ -63,12 +77,11 @@ with open('metadata.txt', 'a') as l:
     url_uri = to_url(pbf_dest, pbf_name, www_dir)
     xml_size = filesizemb(xml_name)
     pbf_size = filesizemb(pbf_dest)
-    kompresja_msg = 'R: '+ str(int(kompresja)) +'%'
     xml_msg = 'XML: ('+ str(xml_size) +'MB)'
     pbf_msg = 'PBF: ('+ str(pbf_size) +'MB)'
     timestamp = datetime.now()
     msg = name + '\n "' + bbox + '"\n    ' + str(timestamp) + '\n'
-    msg_sizes = xml_msg + ' ' + pbf_msg + kompresja_msg
+    msg_sizes = xml_msg + ' ' + pbf_msg
     print '\n'
     print msg
     print url_uri
