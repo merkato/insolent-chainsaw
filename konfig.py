@@ -5,7 +5,7 @@
 mapping_f = 'mapping_topo_c.json'
 osmconvert_dir = '/home/mechanik/dev/osmconvert/'
 imposm_dir = '/home/mechanik/dev/imposm3/'
-www_dir = '/home/mechanik/www/pbfs'
+www_dir = '/home/mechanik/www/'
 
 #Definicje instalacja dev
 #osmconvert_dir = '/home/f_janecek/osmconvert/'

@@ -18,6 +18,12 @@ def filesizemb(filepath):
     if os.path.exists(filepath):
         return (float(os.path.getsize(filepath))/1048576)
     return -1
+
+def usage():
+    print 'Usage: ./extract.py obszar wykonaj'
+    print '         obszar - określenie zasięgu ekstraktu'
+    print '         wykonaj - wartości: sql || www'
+    sys.exit()
 ##
 # Helpers end
 ##
