@@ -1,7 +1,16 @@
 # insolent-chainsaw
 Pobierz dane z Overpass API, skonwertuj do PBF i wystaw w miejsce publiczne
 
-## Extract/Extract_Full
+## Extract
+Sposób wywołania
+./extract.py obszar polecenie
+
+Obszary zdefiniowane są w pliku konfig.py
+polecenie może przyjąć dwie wartości:
+* sql -> spowoduje uruchomienie procesu imposma
+* www -> spowoduje skopiowanie do katalogu serwera www i udostępnienie adresu do pliku
+Wartość dla polecenia jest obowiązkowa!
+
 
 Dostępne funkcje
 * get_osm()
@@ -19,11 +28,13 @@ Dostępne funkcje
   Uruchamianie procesu zewnętrznego
 * filesizemb(filepath)
   Obliczanie wielkości pliku na dysku
+* usage()
+  Drukowanie informacji o sposovie uruchomienia
 
 ## Konfiguracja (konfig.py)
 
 * mapping_f - plik mappingu Imposma
-* osmosis_dir - ścieżka dostępu do katalogu binariów osmosis
+* osmconvert_dir - ścieżka dostępu do katalogu binariów osmosis
 * imposm_dir - ścieżka dostępu do katalogu binariów Imposm3
 * www_dir - ścieżka dostępu do katalogu www
 * baza - adres bazowy usługi overpass
