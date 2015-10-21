@@ -76,27 +76,28 @@ def to_url(pbf_f, pbf_n, www_dir):
     try:
         cmd = 'cp '+ pbf_f + ' ' + www_dir
         url_copy_result = run(cmd)
-        url_uri = 'http://dev.gis-support.pl/repo/pbfs/' + pbf_n
+        url_uri = 'http://et21.gis-support.pl/' + pbf_n
+	    www_pth = www_dir + pbf_n
+	    os.chmod(www_pth, 0666)
     except IOError:
         print "Błąd I/O. Sprawdź uprawnienia zapisu i ścieżki dostępu"
         print "Wykonywano: " + cmd
         sys.exit()
     return url_uri
 
-with open('metadata.txt', 'a') as l:
+
     get_osm(xml_name)
     to_pbf(xml_name, pbf_dest)
     to_sql(mapping_f, pbf_dest)
     url_uri = to_url(pbf_dest, pbf_name, www_dir)
+with open('metadata.txt', 'a') as l:
     xml_size = filesizemb(xml_name)
     pbf_size = filesizemb(pbf_dest)
-    kompresja = xml_size / pbf_size
     xml_msg = 'XML: ('+ str(xml_size) +'MB)'
     pbf_msg = 'PBF: ('+ str(pbf_size) +'MB)'
     timestamp = datetime.now()
     msg = name + '\n "' + bbox + '"\n    ' + str(timestamp) + '\n'
     msg_sizes = xml_msg + ' ' + pbf_msg
-    print '\n'
     print msg
     print url_uri
     print msg_sizes
