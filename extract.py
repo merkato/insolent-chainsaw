@@ -90,7 +90,7 @@ if wykonaj == 'sql':
     to_sql(mapping_f, pbf_dest)
 else:
     to_url(pbf_dest, pbf_name, www_dir)
-    url_uri = 'http://et21.gis-support.pl/' + pbf_n
+    url_uri = 'http://et21.gis-support.pl/' + pbf_name
 with open('metadata.txt', 'a') as l:
     timestamp = datetime.now()
     msg_meta = name + '\n "' + bbox + '"\n    ' + str(timestamp) + '\n'
