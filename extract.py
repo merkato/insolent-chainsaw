@@ -88,11 +88,15 @@ def to_url(pbf_f, pbf_n, www_dir):
         print "Wykonywano: " + cmd
         sys.exit()
 
-get_osm(xml_name)
-to_pbf(xml_name, pbf_dest)
 if wykonaj == 'sql':
+    get_osm(xml_name)
+    to_pbf(xml_name, pbf_dest)
     to_sql(mapping_f, pbf_dest)
-else:
+elif wykonaj == 'process':
+    to_pbf(xml_name, pbf_dest)
+elif wykonaj == 'www':
+    get_osm(xml_name)
+    to_pbf(xml_name, pbf_dest)
     to_url(pbf_dest, pbf_name, www_dir)
     url_uri = 'http://et21.gis-support.pl/' + pbf_name
 with open('metadata.txt', 'a') as l:
