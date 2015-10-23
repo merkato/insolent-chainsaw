@@ -9,6 +9,7 @@ Obszary zdefiniowane są w pliku konfig.py
 polecenie może przyjąć dwie wartości:
 * sql -> spowoduje uruchomienie procesu imposma
 * www -> spowoduje skopiowanie do katalogu serwera www i udostępnienie adresu do pliku
+* process -> przetwarzanie pobranego pliku pbf
 Wartość dla polecenia jest obowiązkowa!
 
 

@@ -93,12 +93,13 @@ if wykonaj == 'sql':
     to_pbf(xml_name, pbf_dest)
     to_sql(mapping_f, pbf_dest)
 elif wykonaj == 'process':
-    to_pbf(xml_name, pbf_dest)
+    to_sql(mapping_f, pbf_dest)
 elif wykonaj == 'www':
     get_osm(xml_name)
     to_pbf(xml_name, pbf_dest)
     to_url(pbf_dest, pbf_name, www_dir)
     url_uri = 'http://et21.gis-support.pl/' + pbf_name
+    print url_uri
 with open('metadata.txt', 'a') as l:
     timestamp = datetime.now()
     msg_meta = name + '\n "' + bbox + '"\n    ' + str(timestamp) + '\n'
@@ -109,7 +110,5 @@ pbf_size = filesizemb(pbf_dest)
 xml_msg = 'XML: ('+ str(xml_size) +'MB)'
 pbf_msg = 'PBF: ('+ str(pbf_size) +'MB)'
 msg_sizes = xml_msg + ' ' + pbf_msg
-if wykonaj != 'sql':
-    print url_uri
 print msg_meta
 print msg_sizes

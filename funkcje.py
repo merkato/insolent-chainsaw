@@ -22,7 +22,7 @@ def filesizemb(filepath):
 def usage():
     print 'Usage: ./extract.py obszar wykonaj'
     print '         obszar - określenie zasięgu ekstraktu'
-    print '         wykonaj - wartości: sql || www'
+    print '         wykonaj - wartości: sql || www ||  process'
     sys.exit()
 ##
 # Helpers end
