@@ -36,6 +36,7 @@ def get_osm(plik):
             c.setopt(c.WRITEDATA, f)
             c.perform()
             c.close()
+            print 'Zapisano XML'
     except pycurl.error:
         print "Błąd komunikacji sieciowej. Sprawdź połączenie internetowe"
         sys.exit()
@@ -49,6 +50,7 @@ def to_pbf(xml,pbf_f):
     p_osmc = osmconvert_dir + 'osmconvert '+ xml +' -o='+ pbf_f
     try:
         o_result = run(p_osmc)
+        print 'Osmconvert skończył pracę'
     except IOError:
         print "Zepsułem coś w Osmconvert. Błąd I/O. Sprawdź uprawnienia zapisu"
         sys.exit()
@@ -62,6 +64,8 @@ def to_sql(mapping, pbf_f):
     p_imposm = imposm_dir + 'imposm3 import -mapping '+ mapping +' -connection postgis://osm:osm@localhost:5432/osm -read '+ pbf_f +' -write -overwritecache'
     try:
         i_result = run(p_imposm)
+        print i_result
+        print 'Imposm3 skończył pracę'
     except:
         print "Zepsułem coś w Imposm. Sprawdź ścieżki dostępu i mapping"
         sys.exit()
