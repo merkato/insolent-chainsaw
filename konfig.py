@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # Definicje lokalne
-mapping_f = '/home/mechanik/dev/imposm3/mapping_topo_c.json'
+mapping_f = '/home/mechanik/dev/imposm3/topo.json'
 osmconvert_dir = '/home/mechanik/dev/osmconvert/'
 imposm_dir = '/home/mechanik/dev/imposm3/'
 www_dir = '/home/mechanik/www/'
@@ -26,5 +26,8 @@ obszar = {
         'test': {'name': 'Unit Test', 'bbox':'17.95605,50.1019,17.97759,50.11577'},
         'bbi': {'name': 'My Zza Buga', 'bbox':'22.31,52.77,24.10,53.79'},
         'ppz': {'name': 'Poznań-Zadupie', 'bbox':'16.40,52.07,17.49,52.764'},
-        'fza': {'name': 'Powiat Żarski', 'bbox': '14.55,51.33,15.3,51.92'}
+        'fza': {'name': 'Powiat Żarski', 'bbox': '14.55,51.33,15.35,51.92'},
+        'istebna': {'name': 'Istebna', 'bbox': '18.80585,49.50827,18.983,49.61516'},
+        'rro': {'name': 'Ropczyce', 'bbox': '21.41,49.84,21.90,50.24'},
+        'ksiestwo': {'name': 'Autonomiczna Republika Górno-Koniakowska', 'bbox':'15.60,48.60,20.70,51.37'}
         }

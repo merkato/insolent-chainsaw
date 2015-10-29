@@ -30,7 +30,7 @@ Dostępne funkcje
 * filesizemb(filepath)
   Obliczanie wielkości pliku na dysku
 * usage()
-  Drukowanie informacji o sposovie uruchomienia
+  Drukowanie informacji o sposobie uruchomienia
 
 ## Konfiguracja (konfig.py)
 
