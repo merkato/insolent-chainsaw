@@ -29,5 +29,6 @@ obszar = {
         'fza': {'name': 'Powiat Żarski', 'bbox': '14.55,51.33,15.35,51.92'},
         'istebna': {'name': 'Istebna', 'bbox': '18.80585,49.50827,18.983,49.61516'},
         'rro': {'name': 'Ropczyce', 'bbox': '21.41,49.84,21.90,50.24'},
-        'ksiestwo': {'name': 'Autonomiczna Republika Górno-Koniakowska', 'bbox':'15.60,48.60,20.70,51.37'}
+        'ksiestwo': {'name': 'Autonomiczna Republika Górno-Koniakowska', 'bbox':'15.60,48.60,20.70,51.37'},
+        'gdynia': {'name': 'Gdynia - atlas miasta', 'bbox':'18.314,54.374,18.654,54.64'}
         }
